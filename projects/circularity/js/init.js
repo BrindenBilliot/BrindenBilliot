@@ -32,11 +32,14 @@ var init = function (window) {
 
        }
         // TODO 3 / 7 : Call the drawCircle() function 
+        for(var i  = 0; i < 100; i++){
        drawCircle();
-       drawCircle();
-       drawCircle();
-       drawCircle();
-       drawCircle();
+        }
+
+    //    drawCircle();
+    //    drawCircle();
+    //    drawCircle();
+    //    drawCircle();
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
         ////////////////////////////////////////////////////////////
@@ -48,21 +51,21 @@ var init = function (window) {
         */
         function update() {
         
-            
-            physikz.updatePosition(circles[0])
-            physikz.updatePosition(circles[1])
-            physikz.updatePosition(circles[2])
-            physikz.updatePosition(circles[3])
-            physikz.updatePosition(circles[4])
+           for(var i = 0; i < circles.length; i++){ 
+            physikz.updatePosition(circles[i])
+            // physikz.updatePosition(circles[1])
+            // physikz.updatePosition(circles[2])
+            // physikz.updatePosition(circles[3])
+            // physikz.updatePosition(circles[4])
 
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-            game.checkCirclePosition(circles[0])
-            game.checkCirclePosition(circles[1])
-            game.checkCirclePosition(circles[2])
-            game.checkCirclePosition(circles[3])
-            game.checkCirclePosition(circles[4])
+            game.checkCirclePosition(circles[i])
+            // game.checkCirclePosition(circles[1])
+            // game.checkCirclePosition(circles[2])
+            // game.checkCirclePosition(circles[3])
+            // game.checkCirclePosition(circles[4])
 
-            
+            }
             // TODO 9 : Iterate over the array
            
             
@@ -82,29 +85,32 @@ var init = function (window) {
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
             var rightEdge = circle.x + circle.radius; 
-            var leftEdge = circle.x + circle.radius;
-            var topEdge = circle.y + circle.radius;
+            var leftEdge = circle.x - circle.radius;
+            var topEdge = circle.y - circle.radius;
             var bottomEdge = circle.y + circle.radius;
 
-            if (rightEdge > canvas.width){
-                circle.x = 0
+            if (leftEdge > canvas.width){
+                circle.x = circle.radius;
                 
             } //THIS IS FOR THE RIGHT SIDE
               
-            if (leftEdge < 0){
-                circle.x = canvas.width
+            if (rightEdge < 0){
+                circle.x = canvas.width + circle.radius;
                 
             }// THIS IS FOR THE LEFT SIDW
             
-            if (topEdge < 0){
-                circle.y = canvas.height
+            if (bottomEdge < 0){
+                circle.y = canvas.height + circle.radius;
                 
             }//THIS IS FOR THE TOP SIDE
 
-            if (bottomEdge > canvas.height){
-                circle.y = 0
+            if (topEdge > canvas.height){
+                circle.y = circle.radius;
               
-            }// THIS IS FOR THE BOTTOM SIDE
+            }
+ 
+            
+            // THIS IS FOR THE BOTTOM SIDE
             
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
